@@ -1,0 +1,164 @@
+/* --- NATIVE TOOLBAR BUTTON STYLE --- */
+
+.gas-rtl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px; 
+  border: none;
+  background-color: transparent;
+  border-radius: 50%; /* Circular icon button */
+  cursor: pointer;
+  color: #444746; /* Standard Google Material Icon Grey */
+  transition: background-color 0.2s, color 0.2s;
+  margin-right: 4px; /* Space between our button and the next icon */
+  flex-shrink: 0; /* Prevent collapsing */
+  position: relative;
+  z-index: 1000; /* Ensure it is clickable */
+  padding: 0; /* Ensure no extra padding affects size */
+}
+
+.gas-rtl-btn:hover {
+  background-color: rgba(68, 71, 70, 0.08); /* Subtle grey hover */
+}
+
+/* Active State (When RTL is ON) */
+.gas-rtl-btn.active {
+  background-color: #c2e7ff; /* Google Active Light Blue */
+  color: #001d35; /* Dark Blue Text */
+}
+
+.gas-rtl-btn svg {
+  fill: currentColor;
+  /* No rotation needed, we swap the paths */
+}
+
+/* Icon Toggling Logic */
+/* Default state (not active): Show LTR icon, Hide RTL icon */
+.gas-rtl-btn .icon-ltr {
+  display: block;
+}
+.gas-rtl-btn .icon-rtl {
+  display: none;
+}
+
+/* Active state (active): Hide LTR icon, Show RTL icon */
+.gas-rtl-btn.active .icon-ltr {
+  display: none;
+}
+.gas-rtl-btn.active .icon-rtl {
+  display: block;
+}
+
+/* --- CUSTOM TOOLTIP STYLE --- */
+/* Mimics the native Google 'Share' tooltip */
+.gas-rtl-tooltip {
+  position: absolute;
+  
+  /* POSITION UPDATED: Display BELOW the button */
+  top: 100%; 
+  bottom: auto; 
+  margin-top: 8px; /* Spacing below button */
+  
+  left: 50%;
+  transform: translateX(-50%);
+  
+  background-color: white;
+  color: #3c4043;
+  font-family: 'Google Sans', Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  
+  /* Drop shadow to match native look */
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+  
+  pointer-events: none; /* Let clicks pass through */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s;
+  
+  /* Maximized Z-Index to prevent being blocked by other layers */
+  z-index: 2147483647; 
+}
+
+/* Show tooltip on hover */
+.gas-rtl-btn:hover .gas-rtl-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- RTL OVERRIDES (Same logic as before) --- */
+
+/* 1. Input Areas */
+body.gas-rtl-active textarea,
+body.gas-rtl-active [contenteditable="true"],
+body.gas-rtl-active .ql-editor,
+body.gas-rtl-active .input-area textarea {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* 2. Main Chat Content */
+body.gas-rtl-active main h1, 
+body.gas-rtl-active main h2, 
+body.gas-rtl-active main h3, 
+body.gas-rtl-active main p, 
+body.gas-rtl-active main li,
+body.gas-rtl-active main .prose,
+body.gas-rtl-active main .text-content {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* 3. AI Studio Components */
+body.gas-rtl-active ms-text-chunk,
+body.gas-rtl-active .model-turn,
+body.gas-rtl-active .user-turn,
+body.gas-rtl-active .turn-body,
+body.gas-rtl-active .conversation-turn {
+  display: block !important;
+  direction: rtl !important;
+  text-align: right !important;
+  width: 100% !important;
+}
+
+/* 4. Lists */
+body.gas-rtl-active main ul, 
+body.gas-rtl-active main ol {
+  direction: rtl !important;
+  text-align: right !important;
+  padding-right: 20px !important;
+  padding-left: 0 !important;
+}
+body.gas-rtl-active main li {
+  list-style-position: inside !important;
+}
+
+/* 5. Exclusions (Sidebar, Code, etc.) */
+body.gas-rtl-active pre,
+body.gas-rtl-active code,
+body.gas-rtl-active .code-block,
+body.gas-rtl-active [class*="language-"] {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Force Sidebar and Nav to remain LTR */
+body.gas-rtl-active nav,
+body.gas-rtl-active [role="navigation"],
+body.gas-rtl-active .mat-drawer,
+body.gas-rtl-active .mat-sidenav,
+body.gas-rtl-active ms-sidebar {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+body.gas-rtl-active mat-icon {
+  direction: ltr !important;
+}

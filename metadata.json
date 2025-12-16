@@ -1,0 +1,5 @@
+{
+  "name": "Gemini RTL/LTR Chat",
+  "description": "A customized Gemini API client specifically designed for bi-directional text support, allowing users to seamlessly toggle between Left-to-Right (LTR) and Right-to-Left (RTL) layouts for Hebrew and English mixed workflows.",
+  "requestFramePermissions": []
+}

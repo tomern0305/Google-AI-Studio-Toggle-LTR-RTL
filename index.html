@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Installation Guide</title>
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 40px auto; line-height: 1.6; padding: 20px; background: #f0f4f8; color: #1a202c; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        h1 { color: #2d3748; margin-top: 0; }
+        code { background: #edf2f7; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+        ol { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        .note { background: #ebf8ff; border-left: 4px solid #4299e1; padding: 15px; margin-top: 20px; border-radius: 4px; }
+        /* Hide the React root so it doesn't interfere with the guide */
+        #root { display: none; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react-markdown": "https://esm.sh/react-markdown@^10.1.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "uuid": "https://esm.sh/uuid@^13.0.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="card">
+        <h1>How to Install</h1>
+        <p>This project is a Chrome Extension. You cannot run it like a website (npm start won't work).</p>
+        
+        <ol>
+            <li>Open Chrome.</li>
+            <li>Navigate to <code>chrome://extensions</code> in the address bar.</li>
+            <li>Turn on <strong>Developer mode</strong> using the switch in the top-right corner.</li>
+            <li>Click the <strong>Load unpacked</strong> button that appears.</li>
+            <li>Select the folder containing this <code>index.html</code> file.</li>
+            <li>Go to <a href="https://aistudio.google.com" target="_blank">Google AI Studio</a>.</li>
+        </ol>
+
+        <div class="note">
+            <strong>Success!</strong> You should see a "RTL Mode" button in the bottom-right corner of Google AI Studio.
+        </div>
+    </div>
+    <!-- Added root div to satisfy index.tsx requirement -->
+    <div id="root"></div>
+</body>
+</html>
